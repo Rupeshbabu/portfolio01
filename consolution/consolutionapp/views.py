@@ -5,8 +5,13 @@ from .models import Blog, Project, Service
 # Create your views here.
 
 def index(request):
-    context = {}
-    return render(request, 'index.html', {})
+    ipro = Project.objects.all()
+    iser = Service.objects.all()
+    blg = Blog.objects.all()
+
+    context = [ipro, iser, blg]
+
+    return render(request, 'index.html', {'context': context})
 
 
 def about(request):
