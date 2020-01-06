@@ -5,13 +5,11 @@ from .models import Blog, Project, Service
 # Create your views here.
 
 def index(request):
-    ipro = Project.objects.all()
-    iser = Service.objects.all()
-    blg = Blog.objects.all()
+    pro = Project.objects.order_by("-upload_at")[:4]
+    ser = Service.objects.order_by("-upload_at")[:3]
+    blg = Blog.objects.order_by("-upload_at")[:3]
 
-    context = [ipro, iser, blg]
-
-    return render(request, 'index.html', {'context': context})
+    return render(request, 'index.html', {'pro': pro, 'ser': ser, 'blg': blg})
 
 
 def about(request):
@@ -35,8 +33,8 @@ def blog(request):
 
 
 def view_blog(request, id):
-    context = {}
-    return render(request, 'single_blog.html', {'id': id})
+    vblg = Blog.objects.get(pk=id)
+    return render(request, 'single_blog.html', {'vblg': vblg})
 
 
 def contact(request):
