@@ -23,7 +23,7 @@
 			<div class="container">
 				<div class="row">
 
-            {% for blog in blg %}
+            {% for blog in blogs %}
           <div class="col-md-6 col-lg-4 ftco-animate">
             <div class="blog-entry">
               <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('{{blog.image}}');">
@@ -39,11 +39,11 @@
                      <p>{{blog.content | slice:":255"}}...</p>
 
                 <div class="d-flex align-items-center mt-4">
-	                <p class="mb-0"><a href="single_blog?id={{blog.id}}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-	                <p class="ml-auto mb-0">
-	                	<a href="#" class="mr-2">Admin</a>
-	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-	                </p>
+	                <p class="ml-auto mb-0"><a href="single_blog?id={{blog.id}}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+<!--	                <p class="ml-auto mb-0">-->
+<!--	                	<a href="#" class="mr-2">Admin</a>-->
+<!--	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>-->
+<!--	                </p>-->
                 </div>
               </div>
             </div>
@@ -53,15 +53,34 @@
         <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if blogs.has_previous %}
+                            <a href="?page=1" class="btn btn-primary">&laquo; first</a>
+                            <a href="?page={{ blogs.previous_page_number }}" class="btn btn-primary">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}.
+                        </span>
+
+                        {% if blogs.has_next %}
+                            <a href="?page={{ blogs.next_page_number }}" class="btn btn-primary">next</a>
+                            <a href="?page={{ blogs.paginator.num_pages }}" class="btn btn-primary">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+
+<!--              <ul>-->
+<!--                <li><a href="#">&lt;</a></li>-->
+<!--                <li class="active"><span>1</span></li>-->
+<!--                <li><a href="#">2</a></li>-->
+<!--                <li><a href="#">3</a></li>-->
+<!--                <li><a href="#">4</a></li>-->
+<!--                <li><a href="#">5</a></li>-->
+<!--                <li><a href="#">&gt;</a></li>-->
+<!--              </ul>-->
             </div>
           </div>
         </div>

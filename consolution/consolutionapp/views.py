@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from .models import Blog, Project, Service
 
 
@@ -29,11 +30,14 @@ def services(request):
 
 def blog(request):
     blg = Blog.objects.all()
-    return render(request, 'blog.html', {'blg': blg})
+    paginator = Paginator(blg, 3)
+    page = request.GET.get('page')
+    blogs = paginator.get_page(page)
+    return render(request, 'blog.html', {'blogs': blogs})
 
 
 def view_blog(request, id):
-    vblg = Blog.objects.get(pk=id)
+    vblg = Blog.objects.filter(id=id)
     return render(request, 'single_blog.html', {'vblg': vblg})
 
 
