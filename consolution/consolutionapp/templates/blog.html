@@ -26,8 +26,8 @@
             {% for blog in blogs %}
           <div class="col-md-6 col-lg-4 ftco-animate">
             <div class="blog-entry">
-              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('{{blog.image}}');">
-								<div class="meta-date text-center p-2">
+              <a href="{% url 'single-blog' blog.id  %}" class="block-20 d-flex align-items-end" style="background-image: url('{{blog.image}}');">
+                        <div class="meta-date text-center p-2">
                   <span class="day">{{blog.upload_at | date:"d"}}</span>
                   <span class="mos">{{blog.upload_at | date:"M"}}</span>
                   <span class="yr">{{blog.upload_at | date:"Y"}}</span>
@@ -36,10 +36,10 @@
               <div class="text bg-white p-4">
                 <h3 class="heading"><a href="#">{{blog.title}}</a></h3>
 
-                     <p>{{blog.content | slice:":255"}}...</p>
+                     <p>{{blog.content | truncatechars:100 }}</p>
 
                 <div class="d-flex align-items-center mt-4">
-	                <p class="ml-auto mb-0"><a href="single_blog?id={{blog.id}}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0"><a href="{% url 'single-blog' blog.id  %}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
 <!--	                <p class="ml-auto mb-0">-->
 <!--	                	<a href="#" class="mr-2">Admin</a>-->
 <!--	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>-->

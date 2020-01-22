@@ -25,6 +25,13 @@ SECRET_KEY = 'vxpo2oulnx)_u$*pp7)-1od)u$u863y+g=j*j-%aju$wf1!(01'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'nrupeshbabu'
+EMAIL_HOST_PASSWORD = 'webteach02'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 ALLOWED_HOSTS = []
 
 
@@ -39,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'consolutionapp.apps.ConsolutionappConfig'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

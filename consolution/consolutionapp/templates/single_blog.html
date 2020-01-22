@@ -16,17 +16,17 @@
           </div>
         </div>
       </div>
-    </section>
+    </section
 
     <section class="ftco-section">
 			<div class="container">
 				<div class="row">
-                  {% for sblog in vblg %}
+
           <div class="col-lg-8 ftco-animate">
-            <h2 class="mb-3">#{{sblog.title}}</h2>
-            <p>{{sblog.content}}</p>
+            <h2 class="mb-3">{{vblg.title}}</h2>
+            <p>{{vblg.content}}</p>
             <p>
-              <img src="{{sblog.image}}" alt="{{sblog.title}}" class="img-fluid">
+              <img src="../../{{vblg.image}}" alt="{{vblg.title}}" class="img-fluid">
             </p>
 
 <!--            <div class="tag-widget post-tag-container mb-5 mt-5">-->
@@ -161,7 +161,7 @@
               </div>
             </div>
           </div> <!-- .col-md-8 -->
-                  {% endfor %}
+
 
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
